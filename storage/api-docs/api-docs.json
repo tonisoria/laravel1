@@ -1,0 +1,269 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Biblioteca",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/M7_M14/laravel/pt2a/public"
+        }
+    ],
+    "paths": {
+        "/api/llibres": {
+            "get": {
+                "tags": [
+                    "llibres"
+                ],
+                "summary": "Veure tots els llibres.",
+                "operationId": "App\\Http\\Controllers\\ApiController::getLlibres",
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els llibres."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            }
+        },
+        "/api/autors": {
+            "get": {
+                "tags": [
+                    "autors"
+                ],
+                "summary": "Veure tots els autors.",
+                "operationId": "App\\Http\\Controllers\\ApiController::getAutors",
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els autors."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            }
+        },
+        "/api/llibre/{id}": {
+            "get": {
+                "tags": [
+                    "llibres"
+                ],
+                "summary": "Veure un llibre concret.",
+                "operationId": "App\\Http\\Controllers\\ApiController::getLlibre",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del llibre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna un llibre concret."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "llibres"
+                ],
+                "summary": "Editar un llibre concret.",
+                "operationId": "App\\Http\\Controllers\\ApiController::updateLlibre",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del llibre a editar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "titol",
+                        "in": "query",
+                        "description": "nou titol del llibre",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "data_public",
+                        "in": "query",
+                        "description": "nova data de publicació del llibre",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "autor_id",
+                        "in": "query",
+                        "description": "nou id de l'autor del llibre",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna el llibre que hem editat."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "llibres"
+                ],
+                "summary": "Eliminar un llibre concret.",
+                "operationId": "App\\Http\\Controllers\\ApiController::deleteLlibre",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del llibre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "S'ha eliminat el llibre correctament."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            }
+        },
+        "/api/autor/{id}": {
+            "get": {
+                "tags": [
+                    "autors"
+                ],
+                "summary": "Veure un autor concret.",
+                "operationId": "App\\Http\\Controllers\\ApiController::getAutor",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id de l'autor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna un autor concret."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            }
+        },
+        "/api/autor": {
+            "post": {
+                "tags": [
+                    "autors"
+                ],
+                "summary": "Inserir un nou autor.",
+                "operationId": "App\\Http\\Controllers\\ApiController::insertAutor",
+                "parameters": [
+                    {
+                        "name": "nom",
+                        "in": "query",
+                        "description": "nom de l'autor",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cognoms",
+                        "in": "query",
+                        "description": "cognoms de l'autor",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna l'autor que hem inserit."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            }
+        },
+        "/api/llibre": {
+            "post": {
+                "tags": [
+                    "llibres"
+                ],
+                "summary": "Inserir un nou llibre.",
+                "operationId": "App\\Http\\Controllers\\ApiController::insertLlibre",
+                "parameters": [
+                    {
+                        "name": "titol",
+                        "in": "query",
+                        "description": "titol del llibre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "data_public",
+                        "in": "query",
+                        "description": "data de publicació del llibre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "autor_id",
+                        "in": "query",
+                        "description": "id de l'autor del llibre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna el llibre que hem inserit."
+                    },
+                    "default": {
+                        "description": "S'ha produit un error."
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
